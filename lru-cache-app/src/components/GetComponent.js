@@ -13,20 +13,22 @@ const GetComponent = () => {
         const data = await getKeyValue(key);
         if (data && data.value !== undefined) {
           setFetchedValue(data.value);
-          setMessage({ error: '' });
+          setMessage({ error: '', message:'' });
         } else {
-          setMessage({ error: 'Value not found' });
+          setMessage({ error: 'Value not found', message: ''});
           setFetchedValue(null);
         }
         setTimeout(() => {
-          setMessage({ error: '' });
+          setMessage({ error: '', message: ''});
+          setFetchedValue(null);
         }, 3000);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setMessage({ error: 'Error fetching data' });
+        setMessage({ error: 'Error fetching data', message:'' });
         setFetchedValue(null);
         setTimeout(() => {
-          setMessage({ error: '' });
+          setMessage({ error: '', message : '' });
+          setFetchedValue(null);
         }, 3000);
       }
   };
